@@ -4,7 +4,7 @@ import studentList from './student.js';
 const app = express();
 const PORT=8000;
 app.get("/", (req, res) => {
-    res.send("hello")
+    res.send(`<h1 style='color:red' align='center'>Hello, Kaise ho aap?</h1>`);
 });
 app.get("/getAllStudent", (req, res) => {
     res.send(studentList);
