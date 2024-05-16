@@ -2,7 +2,7 @@ import express from 'express';
 import studentList from './student.js';
 
 const app = express();
-
+const PORT=8000;
 app.get("/", (req, res) => {
     res.send("hello")
 });
@@ -26,7 +26,11 @@ app.get("/phpStudents", (req, res) => {
     let filterStudnet = studentList.filter(student => student.course=="php");
     res.send(filterStudnet);
 })
-app.listen(8000, (err) => {
+
+
+
+
+app.listen(PORT, (err) => {
     if (err) {
         console.log("Server is not  running");
     }
