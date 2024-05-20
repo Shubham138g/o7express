@@ -26,7 +26,7 @@ const studentList=[
     },
     {
         id:5,
-        name:"shubham",
+        name:"Shubham",
         course:"mean",
     },
     {

@@ -10,10 +10,10 @@ app.get("/", (req, res) => {
 //     res.send(studentList);
 // });
 
-// app.get("/nameWithS", (req, res) => {
-//     let filterStudnet = studentList.filter(student => student.name.startsWith('s') || student.name.startsWith('S'));
-//     res.send(filterStudnet);
-// })
+app.get("/nameWithS/:value", (req, res) => {
+    let filterStudnet = studentList.filter(student => student.name.startsWith(req.params.value));
+    res.send(filterStudnet);
+})
 // app.get("/meanStudents", (req, res) => {
 //     let filterStudnet = studentList.filter(student => student.course=="mean");
 //     res.send(filterStudnet);
