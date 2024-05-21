@@ -1,5 +1,6 @@
-import express from 'express';
+import express, { query } from 'express';
 import studentList from './student.js';
+import product from './product.js';
 
 const app = express();
 const PORT=8000;
@@ -10,10 +11,10 @@ app.get("/", (req, res) => {
 //     res.send(studentList);
 // });
 
-app.get("/nameWithS/:value", (req, res) => {
-    let filterStudnet = studentList.filter(student => student.name.startsWith(req.params.value));
-    res.send(filterStudnet);
-})
+// app.get("/nameWithS/:value", (req, res) => {
+//     let filterStudnet = studentList.filter(student => student.name.startsWith(req.params.value));
+//     res.send(filterStudnet);
+// })
 // app.get("/meanStudents", (req, res) => {
 //     let filterStudnet = studentList.filter(student => student.course=="mean");
 //     res.send(filterStudnet);
@@ -27,16 +28,33 @@ app.get("/nameWithS/:value", (req, res) => {
 //     res.send(filterStudnet);
 // })
 
-app.get("/filterByQueryString",(req,res)=>{
-    let filterStudent=studentList.filter(student => student.course==req.query.course && student.name==req.query.name);
-    res.send(filterStudent);
-})
-app.get("/filterByParams/:course/:name",(req,res)=>{
-    let filterStudent=studentList.filter(student => student.course==req.params.course && student.name==req.params.name);
-    res.send(filterStudent);
-})
+// app.get("/filterByQueryString",(req,res)=>{
+//     let filterStudent=studentList.filter(student => student.course==req.query.course && student.name==req.query.name);
+//     res.send(filterStudent);
+// })
+// app.get("/filterByParams/:course/:name",(req,res)=>{
+//     let filterStudent=studentList.filter(student => student.course==req.params.course && student.name==req.params.name);
+//     res.send(filterStudent);
+// })
 
 
+
+
+
+app.get("/getAllProduct",(req,res)=>{
+    res.send(product)
+})
+
+app.get("/getProductByQuery",(req,res)=>{
+    // console.log(req.params);
+    let fiterProduct=product.filter(productCat=> productCat.category==req.query.category)
+    console.log(fiterProduct);
+    res.send(fiterProduct)
+})
+app.get("/getProductByParams/:price",(req,res)=>{
+    let fiterProduct=product.filter(productPrice=> productPrice.price<=req.params.price)
+    res.send(fiterProduct)
+})
 
 
 //server handling
