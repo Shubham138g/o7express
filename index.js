@@ -1,41 +1,45 @@
 import express, { query } from 'express';
 import studentList from './student.js';
 import product from './product.js';
+import Connection from './server/config/db.js';
+import userModel from './server/apis/user/userModel.js';
+
 
 const app = express();
 const PORT=8000;
+Connection();
 app.get("/", (req, res) => {
     res.send(`<h1 style='color:red' align='center'>Hello, Kaise ho aap?</h1>`);
 });
-// app.get("/getAllStudent", (req, res) => {
-//     res.send(studentList);
-// });
+app.get("/getAllStudent", (req, res) => {
+    res.send(studentList);
+});
 
-// app.get("/nameWithS/:value", (req, res) => {
-//     let filterStudnet = studentList.filter(student => student.name.startsWith(req.params.value));
-//     res.send(filterStudnet);
-// })
-// app.get("/meanStudents", (req, res) => {
-//     let filterStudnet = studentList.filter(student => student.course=="mean");
-//     res.send(filterStudnet);
-// })
-// app.get("/mernStudents", (req, res) => {
-//     let filterStudnet = studentList.filter(student => student.course=="mern");
-//     res.send(filterStudnet);
-// })
-// app.get("/phpStudents", (req, res) => {
-//     let filterStudnet = studentList.filter(student => student.course=="php");
-//     res.send(filterStudnet);
-// })
+app.get("/nameWithS/:value", (req, res) => {
+    let filterStudnet = studentList.filter(student => student.name.startsWith(req.params.value));
+    res.send(filterStudnet);
+})
+app.get("/meanStudents", (req, res) => {
+    let filterStudnet = studentList.filter(student => student.course=="mean");
+    res.send(filterStudnet);
+})
+app.get("/mernStudents", (req, res) => {
+    let filterStudnet = studentList.filter(student => student.course=="mern");
+    res.send(filterStudnet);
+})
+app.get("/phpStudents", (req, res) => {
+    let filterStudnet = studentList.filter(student => student.course=="php");
+    res.send(filterStudnet);
+})
 
-// app.get("/filterByQueryString",(req,res)=>{
-//     let filterStudent=studentList.filter(student => student.course==req.query.course && student.name==req.query.name);
-//     res.send(filterStudent);
-// })
-// app.get("/filterByParams/:course/:name",(req,res)=>{
-//     let filterStudent=studentList.filter(student => student.course==req.params.course && student.name==req.params.name);
-//     res.send(filterStudent);
-// })
+app.get("/filterByQueryString",(req,res)=>{
+    let filterStudent=studentList.filter(student => student.course==req.query.course && student.name==req.query.name);
+    res.send(filterStudent);
+})
+app.get("/filterByParams/:course/:name",(req,res)=>{
+    let filterStudent=studentList.filter(student => student.course==req.params.course && student.name==req.params.name);
+    res.send(filterStudent);
+})
 
 
 
