@@ -70,10 +70,13 @@ app.post("/pass",(req,res)=>{
     const pass=req.body.pass
     try {
         if(email=="admin@gmail.com" && pass=="123"){
-            res.send("user login succesfully")
+            res.json({status:200,message:"user login succesfully",success:true})
+        }
+        else{
+            res.json({status:404,message:`User not found`,success:false})
         }
     } catch (error) {
-       res.send("user is not valid")
+        res.json({status:404,message:`error in pass route${error}`})
     }
 })
 
