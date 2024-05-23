@@ -5,8 +5,11 @@ import Connection from './server/config/db.js';
 import userModel from './server/apis/user/userModel.js';
 
 
+
 const app = express();
 const PORT=8000;
+app.use(express.urlencoded({extended:true}));
+
 Connection();
 app.get("/", (req, res) => {
     res.send(`<h1 style='color:red' align='center'>Hello, Kaise ho aap?</h1>`);
@@ -60,6 +63,19 @@ app.get("/getProductByParams/:price",(req,res)=>{
     res.send(fiterProduct)
 })
 
+
+//23-05-2024
+app.post("/pass",(req,res)=>{
+    const email=req.body.email;
+    const pass=req.body.pass
+    try {
+        if(email=="admin@gmail.com" && pass=="123"){
+            res.send("user login succesfully")
+        }
+    } catch (error) {
+       res.send("user is not valid")
+    }
+})
 
 //server handling
 app.listen(PORT, (err) => {
