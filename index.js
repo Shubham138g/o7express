@@ -67,7 +67,7 @@ app.get("/getProductByParams/:price",(req,res)=>{
 //23-05-2024
 app.post("/pass",(req,res)=>{
     const email=req.body.email;
-    const pass=req.body.pass
+    const pass=req.body.pass;
     try {
         if(email=="admin@gmail.com" && pass=="123"){
             res.json({status:200,message:"user login succesfully",success:true})
