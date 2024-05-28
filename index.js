@@ -35,6 +35,18 @@ app.post("/addUser",async (req, res) => {
         })
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
 // app.get("/getAllStudent", (req, res) => {
 //     res.send(studentList);
 // });
